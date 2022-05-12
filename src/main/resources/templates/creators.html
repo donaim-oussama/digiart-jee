@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <div th:replace="common :: topHead"></div>
+
+</head>
+
+<body class="body header-fixed is_dark">
+
+    <!-- preloade -->
+    <div class="preload preload-container">
+        <div class="preload-logo"></div>
+    </div>
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+
+            <header id="header_main" class="header_1 js-header" th:insert="common :: header"></header>
+                
+            <!-- title page -->
+            <section class="flat-title-page inner">
+                <div class="overlay"></div>
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-title-heading mg-bt-12">
+                                <h1 class="heading text-center">Creators</h1>
+                            </div>
+                            <!--div class="breadcrumbs style2">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="#">Pages</a></li>
+                                    <li>Authors</li>
+                                </ul>
+                            </div-->
+                        </div>
+                    </div>
+                </div>                    
+            </section>
+
+            <section class="tf-section live-auctions style2 no-pt-mb tl-pb-0">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-live-auctions">
+                                <h2 class="tf-title">
+                                    Top Sellers</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="swiper-container seller style2 seller-slider2 button-arow-style">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" th:each="sUser: ${sortedUsers}"  style="padding: 25px;">
+                                        <div class="slider-item">										
+                                            <div class="sc-author-box style-2" >
+                                            <div th:each="avatar: ${listAvatars}" >
+                                                <div th:if="${avatar.id_avatar == sUser.avatarid}"  class="author-avatar">
+                                                	<a th:href="@{/userdetail/{username}(username = ${sUser.username})}">
+                                                        <img  th:src="@{${avatar.image_avatar}}" alt="" class="avatar">
+                                                    	<div class="badge"></div>
+                                                	</a>
+                                                </div>
+                                               </div>
+                                                <div class="author-infor">
+                                                    <h5><a th:href="@{/userdetail/{username}(username = ${sUser.username})}" th:text="${sUser.username}">Crispin Berry</a></h5>
+                                                    <span class="price"  th:text="${sUser.fortune}">214.2 $</span> <span class="price" >$</span>
+                                                </div>
+                                            </div>    	
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-button-next btn-slide-next active"></div>
+                                <div class="swiper-button-prev btn-slide-prev "></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tf-section our-creater dark-style2">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="tf-title style4 mg-bt-38">
+                                Our Creators</h2>
+                        </div>
+                        
+                        
+                        <div class="col-lg-4 col-md-6 col-12"  th:each="user, userStat : ${listUsers}" th:unless="${count[userStat.index] < 1}">
+                        <div th:switch="${count[userStat.index]}? ${count[userStat.index]} : ${false}">
+										    <div th:case="${false}">
+										    	<script>
+										    		//this.parentNode.parentNode.remove();
+										    	</script>
+										    
+										     </div>
+										    <div th:case="*">
+										    	<div class="sc-card-collection style-2" >
+                                <div class="card-bottom">
+                                    <div class="author">
+                                        <div class="sc-author-box style-2" >
+                                        	<div th:each="avatar : ${listAvatars}">
+	                                            <div class="author-avatar" th:if="${avatar.id_avatar == user.avatarid}">
+	                                            	<a th:href="@{/userdetail/{username}(username = ${user.username})}">
+	                                                	<img th:src="@{${avatar.image_avatar}}" alt="" class="avatar">
+	                                            		<div class="badge"></div>
+	                                            	</a>
+	                                        	</div>
+                                        	</div>
+                                        </div>
+                                        <div class="content">
+                                            <h4><a th:href="@{/userdetail/{username}(username = ${user.username})}" th:text="${user.username}">Ralph Garraway</a></h4>
+                                            <div class="infor">
+                                            	<span th:text="${count.get(userStat.index)} + ' posts'">
+                                                <span th:text="${count.get(userStat.index)==1}? 'item product' : 'items products'">12 item products</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+	
+                                </div>
+                                <!--div style="display: flex; flex-flow: row wrap"-->
+                                <div class="media-images-collection" >
+                                <div th:each="pub, pstate : ${atop4}">
+                                
+                                <div th:if="${pub.username == user.username}">
+                                
+                                	<div   >
+	                                	<div class="thisis">
+		                                    <div th:class="${pstate.even}? 'box-right top-img' : 'box-left'" >
+		                                    <div th:style="${count[userStat.index] == 1 ? 'transform : translateX(11%)' : 'display:flex'}">
+		                                    	<a th:href="@{/postdetail/{id}(id = ${pub.id_publication})}">
+	                                            	<img th:src="@{${pub.photosImagePath}}" alt="" > 
+	                                            	
+	                                            </a>
+	                                        </div>
+	                                	</div>
+                                    </div>                              
+                                </div> 
+                                </div>                         
+                            </div></div>
+										    </div>
+										</div>
+                        	
+                            
+                        </div></div></div></section>
+                        
+                        
+
+            <div th:insert="common :: footer"></div>
+
+</body>
+
+</html>

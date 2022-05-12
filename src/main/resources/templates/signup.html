@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!--<![endif]-->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="ISO-8859-1">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Axies | NFT Marketplace HTML Template</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" th:href="@{/icon/Favicon.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/icon/Favicon.png}">
+
+</head>
+
+<body class="body header-fixed is_dark">
+  <!-- preloade -->
+    <div class="preload preload-container">
+        <div class="preload-logo"></div>
+    </div>
+    <!-- /preload -->
+
+
+
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+            <header id="header_main" class="header_1 js-header" th:insert="common :: header"></header>
+            <!-- title page -->
+            <section class="flat-title-page inner">
+                <div class="overlay"></div>
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-title-heading mg-bt-12">
+                                <h1 class="heading text-center">Sign Up</h1>
+                            </div>
+                            <!--div class="breadcrumbs style2">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="#">Pages</a></li>
+                                    <li>Login</li>
+                                </ul>
+                            </div-->
+                        </div>
+                    </div>
+                </div>                    
+            </section>
+
+            <section class="tf-login tf-section">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tf-title-heading ct style-1">
+                                Sign Up To DigiArt
+                            </h2>
+
+                            
+
+                            <div class="flat-form box-login-email">
+                               
+
+                                <div class="form-inner">
+            <form th:action="@{/process_register}" th:object="${user}" method="post" >
+               
+ 					<label class="col-4 col-form-label">username: </label>
+                    <input type="text" th:field="*{username}" class="form-control" required />
+ 
+
+                <label class="col-4 col-form-label">Password: </label>
+                    <input type="password" th:field="*{mot_de_passe}" class="form-control"
+                            required minlength="6" maxlength="10"/>
+     
+                <label class="col-4 col-form-label">First Name: </label>
+
+                    <input type="text" th:field="*{prenom}" class="form-control"
+                            required minlength="2" maxlength="20"/>
+
+                <label class="col-4 col-form-label">Last Name: </label>
+                    <input type="text" th:field="*{nom}" class="form-control"
+                            required minlength="2" maxlength="20" />
+                 
+						                                      
+                <label class="col-4 col-form-label">E-mail: </label>
+                    <input type="text" th:field="*{email}" class="form-control"
+                            required minlength="2" maxlength="20" />
+
+                <label class="col-4 col-form-label">N-Tel: </label>
+                    <input type="number" th:field="*{num_tele}" class="form-control"
+                            required minlength="2" maxlength="20" />
+
+                <label class="col-4 col-form-label">Id Card: </label>
+                    <input type="number" th:field="*{idCarte}" class="form-control"
+                            required minlength="2" maxlength="20" />
+                <label class="col-4 col-form-label">Avatar: </label>
+                <div class="row-form style-3" style="width:100%">
+						                                      <div class="inner-row-form style-2" style="width:100%">
+				 <div class="seclect-box"  style="padding:0px;  width:100%">
+                                                                <div id="item-create" style="width:100%"   class="dropdown">
+                                                                    
+                                                                    <a href="#" class="btn-selector nolink" style="width:100%"  >Choose Avatar</a>
+                                                                    <ul style=" display:flex; width:100%	"  >
+                                                                        <li  style="float:right;" th:each="avatar: ${listAvatars}" ><div class="avatar">
+                                            <img th:src="@{${avatar.image_avatar}}" style="width:200px" alt="Image"> <p  th:text="${avatar.id_avatar}"> </p>
+                                        </div> <p hidden ></p>  <span>Avatar choosen</span></li>
+                                                                      
+                                                                       
+                                                                       
+                                                                    </ul>	
+                                                                </div>
+                                                                </div>
+                                                        </div>
+                                                                 </div>
+                                                          
+     
+
+     <!--        
+					<select th:field="*{avatarid}">
+					    <option th:each="avatar: ${listAvatars}" th:value="${avatar.id_avatar}" th:text="${avatar.image_avatar}"></option>
+					</select>-->
+					
+			
+                         <input  type="hidden" id="myinput" th:field="*{avatarid}" >                                   
+                                                            
+                <button type="submit"  style="margin-top: 50px;">Sign Up</button>
+      		  </form>
+                                 
+                                    
+      <!--  <form th:action="@{/login}" method="post">
+            <div><input type="text" name="username" placeholder="username"/> </div>
+            <div><input type="password" name="password" placeholder="password"/></div>
+            <div><button class="submit">Login</button></div>
+        </form>-->
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+           <!-- Footer -->
+           <!-- /#footer -->
+        <!-- Bottom -->
+        </div>
+        <!-- /#page -->
+    </div>
+    <!-- /#wrapper -->
+
+    <a id="scroll-top"></a>
+
+    <!-- Javascript -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/jquery.easing.js}"></script>
+    <script th:src="@{/js/wow.min.js}"></script>
+    <script th:src="@{/js/plugin.js}"></script>
+    <script th:src="@{/js/jquery-validate.js}"></script>
+    <script th:src="@{/js/shortcodes.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+
+</body>
+
+</html>

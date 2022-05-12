@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <div th:replace="common :: topHead"></div>
+
+</head>
+
+<body class="body header-fixed is_dark">
+
+    <!-- preloade -->
+    <div class="preload preload-container">
+        <div class="preload-logo"></div>
+    </div>
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+            <header id="header_main" class="header_1 js-header" th:insert="common :: header"></header>
+          
+            
+            <!-- title page -->
+            <section class="flat-title-page inner">
+                <div class="overlay"></div>
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-title-heading mg-bt-12">
+                                <h1 class="heading text-center">Products</h1>
+                            </div>
+                            <!--div class="breadcrumbs style2">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="#">Explore</a></li>
+                                    <li>Explore 2</li>
+                                </ul>
+                            </div-->
+                        </div>
+                    </div>
+                </div>                    
+            </section>
+            
+            <section class="tf-section live-auctions style3 pad-b-54 no-pt-mb mobie-pb-70">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-live-auctions mg-bt-21">
+                                <h2 class="tf-title pad-l-7">
+                                    All products</h2>
+                                <div class="seclect-box style3">
+                                <div id="artworks" class="dropdown" style="z-index: auto;">
+                                    <a href="#" class="btn-selector nolink">All Artworks</a>
+                                    <ul>
+                                        <a th:href=@{/products/category/1}><li><span>2D Digital Painting</span></li></a>
+                                        <a th:href=@{/products/category/2}><li><span>3D Digital Painting</span></li></a>
+                                       
+                                    </ul>
+                                </div>
+                                <div id="sort-by" class="dropdown style-2">
+                                    <a href="#" class="btn-selector nolink" >Sort by</a>
+                                    <ul>
+                                        <a th:href=@{/products/sort/1}><li><span>Price</span></li></a>
+                                        <a th:href=@{/products/sort/2}><li><span>Title</span></li></a>
+                                        <a th:href=@{/products/sort/3}><li><span>Date</span></li></a>
+                                        <a th:href=@{/products/sort/4}><li><span>Owner</span></li></a>
+                                       
+                                    </ul>
+                                </div>    
+                            </div>
+                            </div>                            
+                        </div>
+                        <div class="fl-item col-xl-3 col-lg-4 col-md-6 col-sm-6" th:each="pub: ${listPubs}">
+                            <div class="sc-card-product">
+                                <div class="card-media">
+                                    <a th:href="@{/postdetail/{id}(id = ${pub.id_publication})}"><img th:src="@{${pub.photosImagePath}}" alt="Image"></a>
+                                    <div sec:authorize="isAuthenticated()">
+	                                	
+		                                    <div th:if="${pub.username == #request.userPrincipal.principal.username}">
+		                                    	<a th:href="@{/edit/post/{id}(id = ${pub.id_publication})}"class="wishlist-button "><span class="number-like">Edit</span></a>
+		                               </div>
+	                                </div>
+                                </div>
+                                <div class="card-title">
+                                    <h5 th:text="${pub.titre}"  class="style2"><a href="item-details.html">"The RenaiXance Rising the sun  "</a></h5>
+                                    
+                                </div>
+                                <div class="meta-info">
+                                    <div class="author">
+                                    <div th:each="user: ${listUsers}">
+                                        <div th:if="${pub.username == user.username}"  th:each="avatar: ${listAvatars}" >
+                                       		
+                                                       <div th:if="${avatar.id_avatar == user.avatarid}"  >
+                                                        <img  th:src="@{${avatar.image_avatar}}" alt="" class="avatar">
+                                                   
+                                                		</div>
+                                        </div>
+                                       </div>
+                                        <div class="info">
+                                            <span>Owned By</span>
+                                            <h6> <a  th:text="${pub.username }" href="author02.html">SalvadorDali</a> </h6>
+                                        </div>
+                                    </div>
+                                    <div class="price">
+                                        <span>Latest Bid</span>
+                                        <span><h5  th:text="${pub.prix_init}"></h5></span><span> <h5>$</h5></span>
+                                    </div>
+                                </div>
+                                <div sec:authorize="isAuthenticated()">
+	                                <div class="card-bottom">
+	                                    <a th:href="@{/postdetail/{id}#bid(id = ${pub.id_publication})}" data-toggle="modal" data-target="#popup_bid" class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>	                                
+	                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                       
+                        <div class="col-md-12 wrap-inner load-more text-center mg-t-4" th:if="${currentPage != null && totalPages != null}">
+                        	<a th:if="${currentPage > 0}" th:href="@{'/products?page=' + ${currentPage - 1}}" class="sc-button loadmore fl-button pri-3">Previous</a>
+                        	<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+						        <a class="sc-button loadmore fl-button pri-3" th:href="@{'/products?page=' + ${i-1}}">[[${i}]]</a>
+						        &nbsp; &nbsp;
+						    </span>
+                            <a th:if="${currentPage < totalPages - 1}" th:href="@{'/products?page=' + ${currentPage + 1}}" class="sc-button loadmore fl-button pri-3">Next</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="swiper-button-next btn-slide-next"></button>
+            </section>
+           
+
+            <div th:insert="common :: footer"></div>
+
+</body>
+
+</html>

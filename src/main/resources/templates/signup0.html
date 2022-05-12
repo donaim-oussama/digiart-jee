@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Registration to CodeJava Homes</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>User Registration</h1>
+         <form th:action="@{/process_register}" th:object="${user}"
+            method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">username: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{username}" class="form-control" required />
+                </div>
+            </div>
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Password: </label>
+                <div class="col-8">
+                    <input type="password" th:field="*{mot_de_passe}" class="form-control"
+                            required minlength="6" maxlength="10"/>
+                </div>
+            </div>
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">First Name: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{prenom}" class="form-control"
+                            required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Last Name: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{nom}" class="form-control"
+                            required minlength="2" maxlength="20" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">E-mail: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{email}" class="form-control"
+                            required minlength="2" maxlength="20" />
+                </div>
+            </div>
+             <div class="form-group row">
+                <label class="col-4 col-form-label">N-Tel: </label>
+                <div class="col-8">
+                    <input type="number" th:field="*{num_tele}" class="form-control"
+                            required minlength="2" maxlength="20" />
+                </div>
+            </div>
+             <div class="form-group row">
+                <label class="col-4 col-form-label">Id Card: </label>
+                <div class="col-8">
+                    <input type="number" th:field="*{idCarte}" class="form-control"
+                            required minlength="2" maxlength="20" />
+                </div>
+            </div>
+             <div class="form-group row">
+                <label class="col-4 col-form-label">Fortune: </label>
+                <div class="col-8">
+                    <input type="number" th:field="*{fortune}" class="form-control"
+                            required minlength="2" maxlength="20" />
+                </div>
+            </div>
+            
+              <label class="col-4 col-form-label">Avatar: </label>
+					<select th:field="*{avatarid}">
+					    <option th:each="avatar: ${listAvatars}" th:value="${avatar.id_avatar}" th:text="${avatar.image_avatar}"></option>
+					</select>
+             
+            <div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+        </div>
+        </form>
+        
+    </div>
+     
+</body>
+</html>

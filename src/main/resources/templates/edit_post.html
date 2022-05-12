@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <div th:replace="common :: topHead"></div>
+
+</head>
+
+<body class="body header-fixed is_dark">
+
+    <!-- preloade -->
+    <div class="preload preload-container">
+        <div class="preload-logo"></div>
+    </div>
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+            <header id="header_main" class="header_1 js-header" th:insert="common :: header"></header>
+            <!-- title page -->
+            <section class="flat-title-page inner">
+                <div class="overlay"></div>
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-title-heading mg-bt-12">
+                                <h1 class="heading text-center">Edit Item</h1>
+                            </div>
+                            <!--div class="breadcrumbs style2">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="#">Pages</a></li>
+                                    <li>Create Item</li>
+                                </ul>
+                            </div-->
+                        </div>
+                    </div>
+                </div>                    
+            </section>
+            
+
+<div th:if="${pub.username == #request.userPrincipal.principal.username}">
+            <div class="tf-create-item tf-section">
+                <div class="themesflat-container">
+                    <div class="row">
+                         <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                             
+                            </div>
+                         </div>
+                         <div class="themesflat-container">
+                             <div class="form-create-item">
+                                 
+                                <div class="flat-tabs tab-create-item">
+                                    <!--h4 class="title-create-item">Select method</h4>
+                                    <ul class="menu-tab tabs">
+                                        <li class="tablinks active"><span class="icon-fl-tag"></span>Fixed Price</li>
+                                        <li class="tablinks"><span class="icon-fl-clock"></span>Time Auctions</li>
+                                        <li class="tablinks"><span class="icon-fl-icon-22"></span>Open For Bids</li>
+                                    </ul-->
+                                    <div class="content-tab">
+                                        <div class="content-inner">
+                                        
+                                                <form enctype="multipart/form-data" th:action="@{/edit/post/success}"  th:object="${pub}"   method="post">
+                                                
+                                                	<!--<h4 class="title-create-item">Upload file</h4>
+				                                    <label class="uploadFile">
+				                                        <span class="filename">PNG, JPG, GIF, WEBP or MP4. Max 200mb.</span>
+				                                        <input type="file" class="inputfile form-control" name="files" >
+				                                    </label>
+                                                	-->
+                                                	
+                                                   
+                                                    <h4 class="title-create-item">Title</h4>
+                                                    <input type="text" placeholder="Item Name" id="titre" th:field="*{titre}" >
+
+    												
+												<!--	<input th:field="*{id_publication}" type="number" id="id_publication" >-->
+                                                    <h4 class="title-create-item">Description</h4>
+                                                    <textarea placeholder="e.g. This is very limited item" id="description" th:field="*{description}"></textarea>
+    												
+    												<h4 class="title-create-item">Initial price (in $)</h4>
+                                                    <input type="text" placeholder="Item Name" th:field="*{prix_init}" disabled>
+                                                    
+                                                    <h4 class="title-create-item">Category</h4>
+                                                    <input type="text" placeholder="Item Name" th:field="*{categorie.nom_categorie}" disabled>
+                                                    
+                                                    <h4 class="title-create-item">Image</h4>
+                                                    <img class="col-md-8 offset-md-2" th:src="@{${pub.photosImagePath}}" alt="Image">
+                                                    
+                                                    <input type="hidden" th:field="*{id_publication}" name="idPub">
+                                                    
+                                                    
+                                                    <div class="row-form style-3">
+                                                        <!--
+                                                        <div class="inner-row-form style-2"><h4 class="title-create-item">Category</h4>
+                                                            <div class="seclect-box" style="padding:0px">
+                                                                 <label class="col-4 col-form-label">Categorie: </label>
+																	<select th:field="*{categorieid}">
+																	    <option th:each="categorie: ${listCategorie}" th:value="${categorie.id_categorie}" th:text="${categorie.nom_categorie}"></option>
+																	</select>
+                                                            </div>
+                                                        </div>-->
+                                                    </div>
+                                                  <!--  <div class="row-form style-3">
+                                                        
+                                                        <div class="inner-row-form style-2"><h4 class="title-create-item">Category</h4>
+                                                            <div class="seclect-box" style="padding:0px">
+                                                                 <label class="col-4 col-form-label">User: </label>
+																	<select th:field="*{username}">
+																	    <option th:each="categorie: ${listUsers}" th:value="${categorie.username}" th:text="${categorie.username}"></option>
+																	</select>
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
+                                                    <!--<div>
+                                                    
+                                                       <span th:text="${#request.userPrincipal.principal.username}"></span>
+                                                    <label>Photos: </label>
+    														<input type="file" />
+     
+   													 </div>-->
+   													 
+   													    													  
+    
+   													 
+                                                    <button class="tf-button-submit mg-t-15 col-md-8 offset-md-2" type="submit">Update Post</button>   
+                                                </form>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+			</div>
+			<div th:if="${pub.username != #request.userPrincipal.principal.username}">
+				<section class="tf-login tf-section">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tf-title-heading ct style-1">
+                                You cannot edit items you do not own.
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+				</section>
+			</div>
+            </div>
+
+           <div th:insert="common :: footer"></div>
+
+</body>
+
+</html>

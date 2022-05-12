@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Axies | NFT Marketplace HTML Template</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+ 	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/shortcodes.css}">
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" th:href="@{/icon/Favicon.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/icon/Favicon.png}">
+
+</head>
+
+<body class="body header-fixed is_dark">
+
+    <!-- preloade -->
+    <div class="preload preload-container">
+        <div class="preload-logo"></div>
+    </div>
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+             <header id="header_main" class="header_1 js-header" th:insert="common :: header"></header>
+            <!-- title page -->
+            <section class="flat-title-page inner">
+                <div class="overlay"></div>
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-title-heading mg-bt-12">
+                                <h1 class="heading text-center">Item Details</h1>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>                    
+            </section>
+
+            <!-- tf item details -->
+            <div class="tf-section tf-item-details">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="content-left">
+                                <div class="media">
+                                    <img th:src="@{${pub.photosImagePath}}" width="100%" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                            <div class="content-right">
+                                <div class="sc-item-details">
+                                    <h2 class="style2" th:text="${pub.titre}"></h2>
+                                   
+                                    <div class="client-infor sc-card-product">
+                                    <th:block th:switch="${pub.duration}">
+										    <th:block th:case="0">
+										        
+                                             <div class="meta-info">
+                                            <div class="author">
+                                             <div th:each="user: ${listUsers}">
+                                        <div th:if="${pub.ownedby == user.username}"  th:each="avatar: ${listAvatars}" >
+                                       		
+                                                       <div th:if="${avatar.id_avatar == user.avatarid}"  >
+                                                        <img  th:src="@{${avatar.image_avatar}}" alt="" class="avatar">
+                                                   
+                                                		</div>
+                                        </div>
+                                       </div>
+                                                
+                                                <div class="info">
+                                                    <span>owned By</span>
+                                                    <h6> <a href="author02.html" th:text="${pub.ownedby}" >Ralph Garraway</a> </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                           
+                                        		</th:block>
+										   
+										  
+										    <div th:case="*">
+										        
+										    </div>
+										    
+										</th:block>
+                                       
+                                        <div class="meta-info">
+                                            <div class="author">
+                                             <div th:each="user: ${listUsers}">
+                                        <div th:if="${pub.username == user.username}"  th:each="avatar: ${listAvatars}" >
+                                       		
+                                                       <div th:if="${avatar.id_avatar == user.avatarid}"  >
+                                                        <img  th:src="@{${avatar.image_avatar}}" alt="" class="avatar">
+                                                   
+                                                		</div>
+                                        </div>
+                                       </div>
+                                                
+                                                <div class="info">
+                                                    <span>Created By</span>
+                                                    <h6> <a href="author02.html" th:text="${pub.username}" >Ralph Garraway</a> </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <p th:text="${pub.description}">Habitant sollicitudin faucibus cursus lectus pulvinar dolor non ultrices eget.
+                                        Facilisi lobortisal morbi fringilla urna amet sed ipsum vitae ipsum malesuada.
+                                        Habitant sollicitudin faucibus cursus lectus pulvinar dolor non ultrices eget.
+                                        Facilisi lobortisal morbi fringilla urna amet sed ipsum</p>
+                                    <div class="meta-item-details style2">
+                                        <div class="item meta-price">
+                                            <span class="heading">Latest Bid</span>
+                                            <div class="price">
+                                                <div class="price-box">
+                                                    <h5  th:text="${pub.prix_init}"> 4.89 ETH</h5> <h5>&nbsp $</h5>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+										<th:block th:switch="${pub.duration}">
+										    <div th:case="0">
+										        <div class="item count-down" style="width: auto; background-color:brown">
+                                            <span class="heading style-2">Closed</span>
+                                           
+                                        		</div>
+										    </div>
+										  
+										    <div th:case="*">
+										        <div class="item count-down" style="width: auto;">
+                                            <span class="heading style-2">Countdown:  &nbsp </span>
+                                            <span class="js-countdown" th:data-timer="${pub.duration}"
+                                                data-labels="  :  ,  : , : , "></span>
+                                        </div>
+										    </div>
+										    
+										</th:block>
+                                       
+                                    </div>
+                                    <th:block th:switch="${pub.duration}">
+										    <div th:case="0">
+										       <div sec:authorize="isAuthenticated()">
+				                				 <div class="">
+				                                  <center>  <p><a th:href=@{/login}>Closed,</a> Can't place a bid</p> </center>
+				                 					</div>
+				               						 </div>
+													<div sec:authorize="isAnonymous()">
+				                				<div class="">
+				                                  <center>  <p><a th:href=@{/login}>Closed,</a> Can't place a bid</p> </center>
+				                 					</div>
+				               						 </div>
+										    </div>
+										  
+										    <div th:case="*">
+										     <div sec:authorize="isAuthenticated()">
+                				 <a th:href=@{/postdetail/{id}#bid(id=${pub.id_publication})} data-toggle="modal" data-target="#popup_bid" class="sc-button loadmore style bag fl-button pri-3"><span>Place a bid</span></a>
+               						 </div>
+									<div sec:authorize="isAnonymous()">
+                				<div class="">
+                                  <center>  <p><a th:href=@{/login}>Login</a> to place a bid</p> </center>
+                 					</div>
+               						 </div>
+										      
+										    </div>
+										    
+										</th:block>
+                                   
+                                   
+                                    <div class="flat-tabs themesflat-tabs">
+                                        <ul class="menu-tab tab-title">
+                                            <li class="item-title active">
+                                                <span class="inner">Bid History</span>
+                                            </li>
+                                       
+                                            <li class="item-title">
+                                                <span class="inner">Comments</span>
+                                            </li>
+                                        </ul>
+                                        <div class="content-tab">
+                                            <div class="content-inner tab-content">
+                                                <ul class="bid-history-list">
+                                                   
+                                                   
+                                                    <li th:each="offre: ${listOffres}">
+                                                        <div class="content">
+                                                            <div class="client">
+                                                                <div class="sc-author-box style-2">
+                                                                    <div class="author-avatar">
+                                                                        <div th:each="user: ${listUsers}">
+								                                        <div th:if="${offre.username == user.username}"  th:each="avatar: ${listAvatars}" >
+								                                       		
+								                                                       <div th:if="${avatar.id_avatar == user.avatarid}"  >
+								                                                        <img  th:src="@{${avatar.image_avatar}}" alt="" class="avatar">
+								                                                   
+								                                                		</div>
+								                                        </div>
+								                                       </div>
+                                                                        <div class="badge"></div>
+                                                                    </div>
+                                                                    <div class="author-infor">
+                                                                        <div class="name">
+                                                                            <h6> <a href="author02.html" th:text="${offre.username}">Mason Woodward </a></h6> <span> place a bid</span>
+                                                                        </div>
+                                                                        <span class="time" th:text="${offre.date}">8 hours ago</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="price">
+                                                                <h5  th:text="${offre.prix}"> 4.89 ETH</h5>
+                                                                <span >$</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                   
+                                                </ul>
+                                            </div>
+                                           
+                                            <div class="content-inner tab-content">
+                                                <div class="provenance">
+                                                    <div class="content-inner tab-content">
+                                            <div class="provenance">
+                                                <ul class="provenance">
+                                                   
+                                                   
+                                                    <li th:each="comm: ${listCommentaires}">
+                                                        <div class="content">
+                                                            <div class="client">
+                                                                <div class="sc-author-box style-2">
+                                                                    <div class="author-avatar">
+                                                                        <div th:each="user: ${listUsers}">
+								                                        <div th:if="${comm.username == user.username}"  th:each="avatar: ${listAvatars}" >
+								                                       		
+								                                                       <div th:if="${avatar.id_avatar == user.avatarid}"  >
+								                                                        <img  th:src="@{${avatar.image_avatar}}" alt="" class="avatar">
+								                                                   
+								                                                		</div>
+								                                        </div>
+								                                       </div>
+                                                                        <div class="badge"></div>
+                                                                    </div>
+                                                                    <div class="author-infor">
+                                                                        <div class="name">
+                                                                            <h6> <a href="author02.html" th:text="${comm.username}">Mason Woodward </a></h6> <span> commented </span>
+                                                                        </div>
+                                                                        <span class="time" th:text="${comm.date_commentaire}">8 hours ago</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="price">
+                                                                <h5  th:text="${comm.contenu}"> 4.89 ETH</h5>
+                                                               <a href="#" class="price" onclick="document.getElementById('form-delete-id').submit();">
+                                                        <div class="badge red" style="background-color:var(--bg-section);">
+                                                         <i class="fa fa-trash" style=" color:red; margin-left: 2px; margin-top: 7px;margin-right:0px; font-size: 13px;"></i>
+                                                              </div>
+                                                   		 </a>
+                                                            </div>
+                                                            <div sec:authorize="isAuthenticated()">
+                                                             <form th:action="@{/remove_comm}" method="post" id="form-delete-id">
+                                                <div class="author-infor">
+                                                    <input type="hidden" th:value="${comm.id_commentaire}"  name="commentaire" >
+                                                </div>
+                                               </form>
+                                                </div>
+                                                        </div>
+                                                    </li>
+                                                   
+                                                </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div sec:authorize="isAuthenticated()">
+				                				 <form th:action="@{/add_comm}" method="post" id="tt" >
+                                      <input type="text" th:field="*{comm.contenu}" placeholder="Add Comment ..." style="border-radius: 40px;float: left;width: 85%;margin-top: 18px;height: 43px;">
+                          <div class="meta-item" style="padding-top: 22px; padding-left: 7px; ">
+                         				  <input type="hidden" th:value="${#request.userPrincipal.principal.username}" name="participant"  >
+							            <input type="hidden" placeholder="Item Name" name="pubId" th:value="${pub.id_publication}" >
+							           
+                                       
+                                        <div class="right">
+                                            <a href="#" onclick="document.getElementById('tt').submit();" class="share"></a>
+                                            
+                                        </div>
+                                    </div>
+										
+							        
+							           
+							          
+							       </form>
+                          
+				               						 </div>
+                                    
+                        </div>
+                    </div>
+                </div>
+           </div>
+           
+                
+            </section>
+        </div>
+            <!-- /tf item details -->
+                     
+                             <th:block th:switch="${pub.duration}">
+										    <div th:case="0">
+										      
+										    </div>
+										  
+										    <div th:case="*">
+										     	 <div sec:authorize="isAuthenticated()" id="bid">
+                                  <section class="tf-login tf-section">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tf-title-heading ct style-1">
+                                Place a bid
+                            </h2>
+
+   										 <div class="form-inner">
+                             <div class="flat-form box-login-email">
+                                <div class="box-title-login">
+                                    <h5>Place a bid to purchase</h5>
+                                </div>
+                                      <form th:action="@{/place_bid}" method="post" id="bid_place">
+							            <div><input id="kk" type="number" th:field="*{offre.prix}" placeholder="0.0$" /> </div>
+							         	<input type="hidden" th:value="${#request.userPrincipal.principal.username}" name="participant" >
+							            <input type="hidden" placeholder="Item Name" name="pubId" th:value="${pub.id_publication}" >
+							            <div class="d-flex justify-content-between">
+                            <p> Service fee:</p>
+                            <p class="text-right price color-popup"> 0,89 $ </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Total bid amount:</p>
+                            <p class="text-right price color-popup"> 4 $ </p>
+                        </div>
+							            <div><a  style="
+    width: 90%;
+    text-align: center;
+    margin: 5%;
+    font-size: 20px;
+    color: white;
+" onclick="testy()" class="sc-button lore style bag fl-button pri-3">Place bid</a></div>
+							        </form>
+							        
+							       <input type="hidden" th:value="${pub.prix_init}" id="ccc" >
+							       
+							       <script>
+function testy() {
+	if (document.getElementById("kk").value < document.getElementById("ccc").value){
+		text = "You should place a bid higher than " + document.getElementById("ccc").value +" $"
+		alert(text);
+	}else{
+		document.getElementById("bid_place").submit();
+	}
+	
+  
+}
+</script>
+							        </form>
+							      
+                                </div>
+                                 </div>
+                                        </div>
+
+                        </div>
+                    </div>
+                </div>
+										      
+										    </div>
+										    
+										</th:block>
+                                   
+
+                           
+                               
+                
+            </section>
+
+
+</div>
+
+                                
+                     
+            <section class="tf-section live-auctions item-details pad-b-74 mobie-style">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-live-auctions">
+                                <h2 class="tf-title">
+                                    Live Auctions</h2>
+                                <a th:href="@{/auctions}" class="exp">EXPLORE MORE</a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="swiper-container show-shadow carousel pad-t-24 auctions">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" th:each="pub: ${listPubs}">
+                                        <div class="slider-item">										
+                                            <div class="sc-card-product">
+                                                <div class="card-media">
+                                                    <a  th:href="@{/postdetail/{id}(id = ${pub.id_publication})}"><img th:src="@{${pub.photosImagePath}}" alt="Image"></a>
+                                                    <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
+                                                    <div class="featured-countdown">
+                                                        <span class="slogan"></span>
+                                                        <span class="js-countdown" th:data-timer="${pub.duration}" data-labels=" :  ,  : , : , "></span>
+                                                    </div>
+                                                    <div class="button-place-bid">
+                                                       <a th:href="@{/postdetail/{id}(id = ${pub.id_publication})}" th:data-toggle="modal" data-target="#popup_bid" class="sc-button style-place-bid style bag fl-button pri-3"><span>Place Bid</span></a>
+                                                    </div>
+                                                </div>
+                                                <div class="card-title">
+                                                    <h5 th:text="${pub.titre}"><a href="item-details.html">"Hamlet Contemplates Contemplates "</a></h5>
+                                                </div>
+			                                                 <div class="meta-info">
+			                                    <div class="author">
+			                                    <div th:each="user: ${listUsers}">
+			                                        <div th:if="${pub.username == user.username}"  th:each="avatar: ${listAvatars}" >
+			                                       		
+			                                                       <div th:if="${avatar.id_avatar == user.avatarid}"  >
+			                                                        <img  th:src="@{${avatar.image_avatar}}" alt="" class="avatar">
+			                                                   
+			                                                		</div>
+			                                        </div>
+			                                       </div>
+			                                        <div class="info">
+			                                            <span>Owned By</span>
+			                                            <h6> <a  th:text="${pub.username}" href="author02.html">SalvadorDali</a> </h6>
+			                                        </div>
+			                                    </div>
+			                                    <div class="price">
+			                                        <span>Latest Bid</span>
+			                                        <span><h5  th:text="${pub.prix_init }"></h5></span><span> <h5>$</h5></span>
+			                                    </div>
+			                                </div>
+                                               
+                                            </div>    	
+                                        </div><!-- item-->
+                                    </div>
+                          
+                                </div>
+                                <div class="swiper-pagination mg-t-12"></div>
+                                <div class="swiper-button-next btn-slide-next active"></div>
+                                <div class="swiper-button-prev btn-slide-prev"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer id="footer" class="clearfix bg-style">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-12 col-12">
+                            <div class="widget widget-logo">
+                                <div class="logo-footer" id="logo-footer">
+                                <a href="index.html">
+                                    <img id="logo_footer" src="assets/images/logo/logo_dark.png" alt="nft-gaming" width="135" height="56"
+                                    data-retina="assets/images/logo/logo_dark@2x.png" data-width="135"
+                                    data-height="56">
+                                </a>
+                            </div>
+                                <p class="sub-widget-logo">Lorem ipsum dolor sit amet,consectetur adipisicing elit. Quis non, fugit totam vel laboriosam vitae.</p>
+                                <div class="widget-social style-1">
+                                    <ul>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li class="style-2"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="mgr-none"><a href="#"><i class="icon-fl-tik-tok"></i></a></li>
+                                </ul>
+                                </div>
+                            </div><!--/.widget-social-->
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-5">
+                            <div class="widget widget-menu style-1">
+                                <h5 class="title-widget">My Account</h5>
+                                <ul>
+                                    <li><a href="author01.html">Authors</a></li>
+                                    <li><a href="connect-wallet.html">Collection</a></li>
+                                    <li><a href="profile.html">Author Profile</a></li>
+                                    <li><a href="create-item.html">Create Item</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-7">
+                            <div class="widget widget-menu style-2">
+                                <h5 class="title-widget">Resources</h5>
+                                <ul>
+                                    <li><a href="help-center.html">Help & Support</a></li>
+                                    <li><a href="auctions.html">Live Auctions</a></li>
+                                    <li><a href="item-details.html">Item Details</a></li>
+                                    <li><a href="activity1.html">Activity</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-5">
+                            <div class="widget widget-menu fl-st-3">
+                                <h5 class="title-widget">Company</h5>
+                                <ul>
+                                    <li><a href="explore-1.html">Explore</a></li>
+                                    <li><a href="contact1.html">Contact Us</a></li>
+                                    <li><a href="blog.html">Our Blog</a></li>
+                                    <li><a href="faq.html">FAQ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-7">
+                            <div class="widget widget-subcribe">
+                                <h5 class="title-widget">Subscribe Us</h5>
+                                <p class="sub-widget-subcribe">Signup for our newsletter to get the latest news in your inbox.</p>
+                                <div class="form-subcribe">
+                                    <form action="#">
+                                        <input name="email" value="" class="email" type="email" placeholder="info@yourgmail.com" required>
+                                        <button><i class="icon-fl-send"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </footer><!-- /#footer -->
+        <!-- Bottom -->
+        </div>
+        <!-- /#page -->
+        <!-- Modal Popup Bid -->
+        <div class="modal fade popup" id="popup_bid_success" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body space-y-20 pd-40">
+                        <h3 class="text-center">Your Bidding
+                            Successfuly Added</h3>
+                        <p class="text-center">your bid <span class="price color-popup">(4ETH) </span> has been listing to our database</p>
+                        <a href class="btn btn-primary"> Watch the listings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade popup" id="popup_bid" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body space-y-20 pd-40">
+                        <h3>Place a Bid</h3>
+                        <p class="text-center">You must bid at least <span class="price color-popup">4.89 ETH</span>
+                        </p>
+                        <input type="text" class="form-control"
+                            placeholder="00.00 ETH">
+                        <p>Enter quantity. <span class="color-popup">5 available</span>
+                        </p>
+                        <input type="text" class="form-control quantity" value="1">
+                        <div class="hr"></div>
+                        <div class="d-flex justify-content-between">
+                            <p> You must bid at least:</p>
+                            <p class="text-right price color-popup"> 4.89 ETH </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Service free:</p>
+                            <p class="text-right price color-popup"> 0,89 ETH </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Total bid amount:</p>
+                            <p class="text-right price color-popup"> 4 ETH </p>
+                        </div>
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#popup_bid_success" data-dismiss="modal" aria-label="Close"> Place a bid</a>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <!-- /#wrapper -->
+
+    <a id="scroll-top"></a>
+
+    <!-- Javascript -->
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/wow.min.js}"></script>
+    <script th:src="@{/js/count-down.js}"></script>
+    <script th:src="@{/js/swiper-bundle.min.js}"></script>
+    <script th:src="@{/js/swiper.js}"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/jquery.easing.js}"></script>
+    <script th:src="@{/js/wow.min.js}"></script>
+    <script th:src="@{/js/plugin.js}"></script>
+    <script th:src="@{/js/jquery-validate.js}"></script>
+    <script th:src="@{/js/shortcodes.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+
+</body>
+
+</html>

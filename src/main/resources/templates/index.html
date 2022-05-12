@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!--<![endif]-->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="ISO-8859-1">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>DigiArt | Digital Marketplace</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" th:href="@{/icon/Favicon.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/icon/Favicon.png}">
+
+</head>
+
+<body class="body header-fixed is_dark">
+
+    <!-- preloade -->
+    <div class="preload preload-container">
+        <div class="preload-logo"></div>
+    </div>
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+           <header id="header_main" class="header_1 js-header" th:insert="common :: header"></header>
+            <!-- Header -->              
+            <!-- title page -->
+            <section class="flat-title-page style2">
+                <img class="bgr-gradient gradient1" th:src="@{/images/backgroup-secsion/bg-gradient1.png}"  alt="">
+                <img class="bgr-gradient gradient2" th:src="@{/images/backgroup-secsion/bg-gradient2.png}" alt="">
+                <img class="bgr-gradient gradient3" th:src="@{/images/backgroup-secsion/bg-gradient3.png}" alt="">
+                <div class="shape item-w-16"></div>
+                <div class="shape item-w-22"></div>
+                <div class="shape item-w-32"></div>
+                <div class="shape item-w-48"></div>
+                <div class="shape style2 item-w-51"></div>
+                <div class="shape style2 item-w-51 position2"></div>
+                <div class="shape item-w-68"></div>
+                <div class="overlay"></div>
+                <div class="swiper-container mainslider home">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="slider-item">	
+                                <div class="themesflat-container ">
+                                    <div class="wrap-heading flat-slider flex">
+                                        <div class="content">
+                                            <h2 >Discover, find,
+                                            </h2>	
+                                            <h1 class="mb-style"><span class="tf-text s1">Sell extraordinary</span>                                          
+                                            </h1>
+                                            <h1 class="">Digital Arts</h1>
+                                            <p class="">Marketplace for Digital
+                                            </p>
+                                            <div class=" flex style2" style="
+										    padding-top: 50px;
+										    width: 340px;
+										    justify-content: space-around;">
+                                                <a th:href="@{/products}" class="sc-button header-slider style style-1 rocket fl-button pri-1"><span>Explore
+                                                </span></a>
+                                                <div sec:authorize="isAuthenticated()" >
+                                                <div  sec:authorize="hasAnyAuthority('CREATOR')">
+														<a th:href="@{/add}" class="sc-button header-slider style style-1 note fl-button pri-1"><span>Create
+                                                </span></a>
+										</div>
+                                                
+                                                </div>
+                                                <div sec:authorize="isAnonymous()">
+                                                <a th:href="@{/login}" class="sc-button header-slider style style-1  fl-button pri-1"><i class="fa fa-sign-in" style="font-size:15px;color:white"></i> <span style="padding: 10px"> Login
+                                                </span></a>
+                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div classe="shape  item-w-48 image" style="
+    display: flex;
+">
+                                            <img class="img" th:src="@{/images/backgroup-secsion/img-bg-sliderhome2.png}" alt="Image" style="
+    float: left;
+">
+                                            <img th:src="@{/images/box-item/imgslider2.png}" alt="Image" style="
+    float: right;
+    width: 300px;
+    position: absolute;
+    float: right;
+    margin-left: 235px;
+    transition: 100px;
+">
+                                        </div>
+                                    </div>
+                                    
+                                </div>					                           
+                            </div><!-- item-->
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slider-item">	
+                                <div class="themesflat-container ">
+                                    <div class="wrap-heading flat-slider flex">
+                                        <div class="content">
+                                            <h2 class="heading">Discover, find,
+                                            </h2>	
+                                            <h1 class="heading"><span class="tf-text s1">Sell extraordinary</span>                                          
+                                            </h1>
+                                            <h1 class="heading">Monster NFTs</h1>
+                                            <p class="sub-heading mg-t-29 mg-bt-44">Marketplace for monster character cllections non fungible token NFTs
+                                            </p>
+                                            <div class="flat-bt-slider flex style2">
+                                                <a href="explore-1.html" class="sc-button header-slider style style-1 rocket fl-button pri-1"><span>Explore
+                                                </span></a>
+                                                <a href="create-item.html" class="sc-button header-slider style style-1 note fl-button pri-1"><span>Create
+                                                </span></a>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+                                            <img class="img-bg" src="assets/images/backgroup-secsion/img-bg-sliderhome2.png" alt="Image">
+                                            <img src="assets/images/box-item/imgslider2.png" alt="Image">
+                                        </div>
+                                    </div>
+                                    
+                                </div>					                           
+                            </div><!-- item-->
+                        </div>
+                    </div>
+                </div>                       
+            </section>
+
+            <section class="tf-section live-auctions style2 no-pt-mb tl-pb-0">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-live-auctions">
+                                <h2 class="tf-title">
+                                    Top Sellers</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="swiper-container seller style2 seller-slider2 button-arow-style">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" th:each="user: ${sortedUsers}"  style="padding: 25px;">
+                                        <div class="slider-item">										
+                                            <div class="sc-author-box style-2" >
+                                            <div th:each="avatar: ${listAvatars}" >
+                                                <div th:if="${avatar.id_avatar == user.avatarid}"  class="author-avatar">
+                                                        <img  th:src="@{${avatar.image_avatar}}" alt="" class="avatar">
+                                                    <div class="badge"></div>
+                                                </div>
+                                               </div>
+                                                <div class="author-infor">
+                                                    <h5><a th:href="@{/userdetail/{username}(username = ${user.username})}" th:text="${user.username}">Crispin Berry</a></h5>
+                                                    <span class="price"  th:text="${user.fortune}">214.2 $</span> <span class="price" >$</span>
+                                                </div>
+                                            </div>    	
+                                        </div><!-- item-->
+                                    </div>
+                                </div>
+                                <div class="swiper-button-next btn-slide-next active"></div>
+                                <div class="swiper-button-prev btn-slide-prev "></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+           
+          
+
+            <section class="tf-section live-auctions style3 pad-b-54 no-pt-mb mobie-pb-70">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-live-auctions mg-bt-21">
+                                <h2 class="tf-title pad-l-7">
+                                    Latest Picks</h2>
+                                <a th:href="@{/products}" class="exp style2">EXPLORE MORE</a>
+                            </div>
+                        </div>
+                        <div class="fl-item col-xl-3 col-lg-4 col-md-6 col-sm-6" th:each="pub: ${listPubs}">
+                            <div class="sc-card-product">
+                                <div class="card-media">
+                                    <a th:href="@{/postdetail/{id}(id = ${pub.id_publication})}"><img th:src="@{${pub.photosImagePath}}" alt="Image"></a>
+                                     <div sec:authorize="isAuthenticated()">
+	                                	
+		                                    <div th:if="${pub.username == #request.userPrincipal.principal.username}">
+		                                    	<a th:href="@{/edit/post/{id}(id = ${pub.id_publication})}" class="wishlist-button "><span class="number-like">Edit</span></a>
+		                               </div>
+	                                </div>
+                                    
+                                </div>
+                                <div class="card-title">
+                                    <h5 th:text="${pub.titre}"  class="style2"><a href="item-details.html">"The RenaiXance Rising the sun  "</a></h5>
+                                </div>
+                                <div class="meta-info">
+                                    <div class="author">
+                                    <div th:each="user: ${listUsersEnabled}">
+                                        <div th:if="${pub.username == user.username}"  th:each="avatar: ${listAvatars}" >
+                                       		
+                                                       <div th:if="${avatar.id_avatar == user.avatarid}"  >
+                                                        <img  th:src="@{${avatar.image_avatar}}" alt="" class="avatar">
+                                                   
+                                                		</div>
+                                        </div>
+                                       </div>
+                                        <div class="info">
+                                            <span>Owned By</span>
+                                            <h6> <a  th:text="${pub.username}" href="author02.html">SalvadorDali</a> </h6>
+                                        </div>
+                                    </div>
+                                    <div class="price">
+                                        <span>Latest Bid</span>
+                                        <span><h5  th:text="${pub.prix_init }"></h5></span><span> <h5>$</h5></span>
+                                    </div>
+                                </div>
+                                <div sec:authorize="isAuthenticated()">
+	                                  <div class="card-bottom">
+                                    <a th:href="@{/postdetail/{id}(id = ${pub.id_publication})}" data-toggle="modal" data-target="#popup_bid" class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>
+                                    
+                                </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                        
+                       
+                        <div class="col-md-12 wrap-inner load-more text-center mg-t-4">
+                            <a href="#" id="loadmore" class="sc-button loadmore fl-button pri-3"><span>Load More</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Footer -->
+           <footer id="footer" class="footer-light-style clearfix bg-style">
+            <div class="themesflat-container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-12 col-12">
+                        <div class="widget widget-logo">
+                            <div class="logo-footer" id="logo-footer">
+                                <a href="index.html">
+                                    <img id="logo_footer" th:src="@{/images/logo/logo_dark.png}" alt="nft-gaming" width="135" height="56"
+                                    data-retina="assets/images/logo/logo_dark@2x.png" data-width="135"
+                                    data-height="56">
+                                </a>
+                            </div>
+                            <p class="sub-widget-logo">This platform will be an online catalog for art lovers by giving artists the opportunity to promote and sell their products online.</p>
+                            <!--div class="widget-social style-1">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li class="style-2"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="mgr-none"><a href="#"><i class="icon-fl-tik-tok"></i></a></li>
+                                </ul>
+                            </div-->
+                        </div><!--/.widget-social-->
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-5">
+                        <div class="widget widget-menu style-1">
+                            <h5 class="title-widget">Quick access</h5>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="explore-2.html">Products</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-7">
+                        <div class="widget widget-menu style-2">
+                            <h5 class="title-widget">Creators Room</h5>
+                            <ul>
+                                <li><a href="author01.html">Creators</a></li>
+                                <li><a href="create-item.html">Publish</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-5">
+                        <div class="widget widget-menu fl-st-3">
+                            <h5 class="title-widget">Help</h5>
+                            <ul>
+                                <li><a href="help-center.html">Help Center</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                                <li><a href="contact1.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-7">
+                        
+                        <div class="image">
+                                        <img th:src="@{/images/box-item/imgslider-3.png}" alt="Image">
+                                       
+                                    </div>
+                    </div>
+                </div>
+            </div>
+       </footer><!-- /#footer -->
+        </div>
+        <!-- /#page -->
+
+        <!-- Modal Popup Bid -->
+        <div class="modal fade popup" id="popup_bid_success" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body space-y-20 pd-40">
+                        <h3 class="text-center">Your Bidding
+                            Successfuly Added</h3>
+                        <p class="text-center">your bid <span class="price color-popup">(4$) </span> has been listing to our database</p>
+                        <a href class="btn btn-primary"> Watch the listings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade popup" id="popup_bid" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body space-y-20 pd-40">
+                        <h3>Place a Bid</h3>
+                        <p class="text-center">You must bid at least <span class="price color-popup">4.89 $</span>
+                        </p>
+                        <input type="text" class="form-control"
+                            placeholder="00.00 $">
+                        <p>Enter quantity. <span class="color-popup">5 available</span>
+                        </p>
+                        <input type="text" class="form-control quantity" value="1">
+                        <div class="hr"></div>
+                        <div class="d-flex justify-content-between">
+                            <p> You must bid at least:</p>
+                            <p class="text-right price color-popup"> 4.89 $ </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Service free:</p>
+                            <p class="text-right price color-popup"> 0,89 $ </p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p> Total bid amount:</p>
+                            <p class="text-right price color-popup"> 4 $ </p>
+                        </div>
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#popup_bid_success" data-dismiss="modal" aria-label="Close"> Place a bid</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a id="scroll-top"></a>
+
+    <!-- Javascript -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/jquery.easing.js}"></script>
+    <script th:src="@{/js/wow.min.js}"></script>
+    <script th:src="@{/js/plugin.js}"></script>
+    <script th:src="@{/js/jquery-validate.js}"></script>
+    <script th:src="@{/js/shortcodes.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+	<script>
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <div th:replace="common :: topHead"></div>
+
+</head>
+
+<body class="body header-fixed is_dark">
+
+    <!-- preloade -->
+    <div class="preload preload-container">
+        <div class="preload-logo"></div>
+    </div>
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+            <header id="header_main" class="header_1 js-header" th:insert="common :: header"></header>
+                
+            <!-- title page -->
+            <section class="flat-title-page inner">
+                <div class="overlay"></div>
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-title-heading mg-bt-12">
+                                <h1 class="heading text-center">Edit Profile</h1>
+                            </div>
+                            <div class="breadcrumbs style2">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="#">Pages</a></li>
+                                    <li><a href="#">Author</a></li>
+                                    <li>Edit Profile</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>                    
+            </section>
+
+            <div class="tf-create-item tf-section">
+                <div class="themesflat-container">
+                    <div class="row">
+                         
+                         <div class="col-md-8 offset-md-2">
+                             <div class="form-upload-profile">
+                                
+
+                                <form th:action="@{/edit/profile/success}" th:object="${user}" method="post" class="form-profile">
+                                    <div class="form-infor-profile">
+                                        <div class="info-account">
+                                            <h4 class="title-create-item">Account info</h4>                                    
+                                                <fieldset>
+                                                    <h4 class="title-infor-account">Username</h4>
+                                                    <input type="text" th:placeholder="${user.username}"  disabled>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <h4 class="title-infor-account">Email Address</h4>
+                                                    <input type="text" th:placeholder="${user.email}" disabled>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <h4 class="title-infor-account">Balance</h4>
+                                                    <input type="text" th:placeholder="${user.fortune} + ' $'" disabled>
+                                                </fieldset>
+                                                
+                                        </div>
+                                        <div class="info-account">
+                                            <h4 class="title-create-item">Modify these</h4>                                    
+                                                <fieldset>
+                                                    <h4 class="title-infor-account">First name</h4>
+                                                    <input type="text" th:field="*{prenom}" name="prenom" required class="form-control">                                                    
+                                                </fieldset>
+                                                <fieldset>
+                                                    <h4 class="title-infor-account">Last name</h4>
+                                                    <input type="text" th:field="*{nom}" th:placeholder="${user.nom}" name="nom" required class="form-control">
+                                                </fieldset>
+                                                <fieldset>
+                                                    <h4 class="title-infor-account">Phone number</h4>
+                                                    <input type="text" th:field="*{num_tele}" th:placeholder="${user.num_tele}" name="num_tele" required class="form-control">
+                                                </fieldset>
+                                        </div> 
+                                    </div>
+                                    <h4 class="title-create-item">Avatar</h4>
+                                    <fieldset>
+                                    	<h4 class="title-infor-account">Current avatar</h4>
+                                    	<img th:src="@{${currentAvatar.image_avatar}}" style="width:200px" alt="Image">
+                                    </fieldset>
+                                    <fieldset>
+                                    	<h4 class="title-infor-account">Change avatar</h4>
+						                <div class="row-form style-3" style="width:100%">
+											<div class="inner-row-form style-2" style="width:100%">
+												<div class="seclect-box"  style="padding:0px;  width:100%">
+									                <div id="item-create" style="width:100%"   class="dropdown">
+										                <a href="#" class="btn-selector nolink" style="width:100%"  >Choose Avatar</a>
+										                <ul style=" display:flex; width:100%	"  >
+										                	<li  style="float:right;" th:each="avatar: ${listAvatars}" ><div class="avatar">
+										                    <img th:src="@{${avatar.image_avatar}}" style="width:200px" alt="Image"> <p  th:text="${avatar.id_avatar}"> </p>
+										                    </div> <p hidden ></p>  <span>Avatar </span> <span  th:text="${avatar.id_avatar}"></span> <span> choosen</span></li>
+										                 </ul>	
+						                             </div>
+						                         </div>
+						                     </div>
+						                 </div>
+                                    	<input  type="hidden" id="myinput" th:field="*{avatarid}" name="avatarid">
+                                    	
+                                    	
+                                    <button class="tf-button-submit mg-t-15 col-md-8 offset-md-2" type="submit">
+                                        Update Profile
+                                    </button>           
+                                </form>
+                            </div>
+                         
+                         
+                         
+		                                                          
+		     
+		
+		     <!--        
+							<select th:field="*{avatarid}">
+							    <option th:each="avatar: ${listAvatars}" th:value="${avatar.id_avatar}" th:text="${avatar.image_avatar}"></option>
+							</select>>
+							
+					
+		                          -->
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+           <div th:insert="common :: footer"></div>
+
+</body>
+
+</html>

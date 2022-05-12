@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!--<![endif]-->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="ISO-8859-1">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>ADMIN | DASHBOARD</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" th:href="@{/icon/Favicon.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/icon/Favicon.png}">
+
+</head>
+
+<body class="body header-fixed is_dark">
+
+    <!-- preloade -->
+    <div class="preload preload-container">
+        <div class="preload-logo"></div>
+    </div>
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="page" class="clearfix">
+            <header id="header_main" class="header_1 js-header" th:insert="common :: header"></header>
+            <!-- Header -->              
+            <!-- title page -->
+           <section class="flat-title-page inner">
+                <div class="overlay"></div>
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-title-heading mg-bt-12">
+                                <h1 class="heading text-center">Admin/Users</h1>
+
+
+                            </div>
+                            <!--div class="breadcrumbs style2">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="#">Explore</a></li>
+                                    <li>Explore 2</li>
+                                </ul>
+                            </div-->
+                        </div>
+                    </div>
+                </div>                    
+            </section>
+
+            <section class="tf-section live-auctions style2 no-pt-mb tl-pb-0">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                          
+                        </div>
+                        <div class="col-md-12">
+                           
+                             
+                                    <div class="swiper-slide" th:each="user: ${listUsers}"  style="padding: 25px; width:auto; height:auto; float:left">
+                                        <div class="slider-item">										
+                                            <div class="sc-author-box style-2" >
+                                            <div th:each="avatar: ${listAvatars}" >
+                                                <div th:if="${avatar.id_avatar == user.avatarid}"  class="author-avatar">
+                                                        <img  th:src="@{${avatar.image_avatar}}" alt="" class="avatar">
+                                                    <a href="#" th:onclick="RemoveUser([[${user.username}]]);"><div class="badge red" style="background-color:white;"><i class="fa fa-trash" style=" color:red;position: absolute; margin-left: 2px; margin-top: 7px; font-size: 13px;
+"></i></div></a>
+                                                </div>
+                                               </div>
+                                               <script>
+                                               function RemoveUser(id) {
+															
+															var user = document.getElementById(id).getElementsByTagName("INPUT")[1].value;
+															
+															console.log(user);
+															msg = "You really want remove " + user ;
+															if (confirm(msg) == true) {
+																					  document.getElementById(id).submit();
+																					} else {
+																					  text = "You canceled!";
+																					}	
+																}
+                                               
+                                               </script>
+                                               <form th:action="@{/remove_user}" method="post" th:id="${user.username}" >
+                                               <input type="hidden" th:value="${user.username}"  name="participant"  th:id="${user.username}" >
+                                                <div class="author-infor">
+                                                    <h5><a th:href="@{/userdetail/{username}(username = ${user.username})}"  th:text="${user.username}">Crispin Berry</a></h5>
+                                                	
+                                                </div>
+                                               </form>
+                                               <form th:action="@{/enable_user}" method="post" >
+                                               		<input type="hidden" th:value="${user.username}"  name="userforenabling" >
+                                               		<div th:if= "${user.active == true}">
+                                               		<center><button type="submit" style="background-color: olivedrab;" >Enabled</button></center>
+                                               		</div>
+                                               		<div th:if= "${user.active == false}">
+                                               		<center><button type="submit" style="background-color: brown;" >Disabled</button></center>
+                                               		</div>
+                                               </form>
+                                               
+                                            </div>    	
+                                             
+                                       
+                                        </div><!-- item-->
+                                      
+                                       
+                                    </div>
+                            
+                                <div class="swiper-button-next btn-slide-next active"></div>
+                                <div class="swiper-button-prev btn-slide-prev "></div>
+                            </div>
+                        
+                    </div>
+                </div>
+            </section>
+
+            
+
+
+           
+        </div>
+        <!-- /#page -->
+
+          <div th:insert="common :: footer"></div>
+     
+    </div>
+
+    <a id="scroll-top"></a>
+
+    <!-- Javascript -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/jquery.easing.js}"></script>
+    <script th:src="@{/js/wow.min.js}"></script>
+    <script th:src="@{/js/plugin.js}"></script>
+    <script th:src="@{/js/jquery-validate.js}"></script>
+    <script th:src="@{/js/shortcodes.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+	<script>
+
+	</script>
+</body>
+
+</html>

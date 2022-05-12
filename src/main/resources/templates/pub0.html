@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!--<![endif]-->
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="ISO-8859-1">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Axies | NFT Marketplace HTML Template</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" th:href="@{/icon/Favicon.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/icon/Favicon.png}">
+
+</head>
+
+<body class="body header-fixed is_dark">
+  <!-- preloade -->
+    <div class="preload preload-container">
+        <div class="preload-logo"></div>
+    </div>
+    <!-- /preload -->
+
+
+
+    <div id="wrapper">
+        <div id="wrapper">
+        <div id="page" class="clearfix">
+            
+            <!-- title page -->
+            <section class="flat-title-page inner">
+                <div class="overlay"></div>
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="page-title-heading mg-bt-12">
+                                <h1 class="heading text-center">Explore 1</h1>
+                            </div>
+                            <div class="breadcrumbs style2">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="#">Explore</a></li>
+                                    <li>Explore 1</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>                    
+            </section>
+
+            <div class="tf-section sc-explore-1">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="wrap-box explore-1 flex mg-bt-40">
+                                <div class="seclect-box style-1">
+                                    <div id="item_category" class="dropdown">
+                                        <a href="#" class="btn-selector nolink">All categories</a>
+                                        <ul >
+                                            <li><span>Art</span></li>
+                                            <li class="active"><span>Music</span></li>
+                                            <li><span>Domain Names</span></li>
+                                            <li><span>Virtual World</span></li>
+                                            <li><span>Trading Cards</span></li>
+                                            <li><span>Sports</span></li>
+                                            <li><span>Utility</span></li>
+                                        </ul>
+                                    </div>
+                                    <div id="buy" class="dropdown">
+                                        <a href="#" class="btn-selector nolink">Buy Now</a>
+                                        <ul >
+                                            <li><span>On Auction</span></li>
+                                            <li><span>Has Offers</span></li>
+                                        </ul>
+                                    </div>
+                                    <div id="all-items" class="dropdown">
+                                        <a href="#" class="btn-selector nolink">All Items</a>
+                                        <ul >
+                                            <li><span>Single Items</span></li>
+                                            <li><span>Bundles</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="seclect-box style-2 box-right">
+                                    <div id="artworks" class="dropdown">
+                                        <a href="#" class="btn-selector nolink">All Artworks</a>
+                                        <ul >
+                                            <li><span>Abstraction</span></li>
+                                            <li><span>Skecthify</span></li>
+                                            <li><span>Patternlicious</span></li>
+                                            <li><span>Virtuland</span></li>
+                                            <li><span>Papercut</span></li>
+                                        </ul>
+                                    </div>
+                                    <div id="sort-by" class="dropdown">
+                                        <a href="#" class="btn-selector nolink">Sort by</a>
+                                        <ul >
+                                            <li><span>Top rate</span></li>
+                                            <li><span>Mid rate</span></li>
+                                            <li><span>Low rate</span></li>
+                                        </ul>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+
+  
+                  
+                        <div th:each="pub: ${listPubs}" class="fl-item col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                            <div class="sc-card-product">
+                                <div class="card-media">
+                                    <a href="item-details.html"><img th:src="@{${pub.photosImagePath}}" alt="Image"></a>
+                                    <button class="wishlist-button heart"><span class="number-like"> 100</span></button>
+                                </div>
+                                <div class="card-title">
+                                    <h5 class="style2"><a th:text="${pub.titre}" href="item-details.html">"Travel Monkey Club #45"</a></h5>
+                                    <div class="tags">bsc</div>
+                                </div>
+                                <div class="meta-info">
+                                    <div class="author">
+                                        <div class="avatar">
+                                            <img th:src="@{${pub.photosImagePath}}" alt="Image">
+                                        </div>
+                                        <div class="info">
+                                            <span>Owned By</span>
+                                            <h6> <a th:text="${pub.username}" >SalvadorDali</a> </h6>
+                                        </div>
+                                    </div>
+                                    <div class="price">
+                                        <span>Current Bid</span>
+                                     <span><h5 th:text="${pub.prix_init}" > </h5>$</span>
+                                    </div>
+                                </div>
+                                <div class="card-bottom">
+                                    <a href="#" data-toggle="modal" data-target="#popup_bid" class="sc-button style bag fl-button pri-3"><span>Place Bid</span></a>
+                                    <a href="activity1.html" class="view-history reload">View History</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 wrap-inner load-more text-center">
+                            <a href="#" id="loadmore" class="sc-button loadmore fl-button pri-3"><span>Load More</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+    </div>
+    <!-- /#wrapper -->
+
+    <a id="scroll-top"></a>
+
+    <!-- Javascript -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/jquery.easing.js}"></script>
+    <script th:src="@{/js/wow.min.js}"></script>
+    <script th:src="@{/js/plugin.js}"></script>
+    <script th:src="@{/js/jquery-validate.js}"></script>
+    <script th:src="@{/js/shortcodes.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+
+</body>
+
+</html>
